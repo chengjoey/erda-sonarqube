@@ -6,8 +6,8 @@ services:
       - port: 9000
         expose: true
     envs:
-      SONAR_ADMIN_PASSWORD: &{env.SONAR_ADMIN_PASSWORD}
-      SONAR_ADMIN_TOKEN: &{env.SONAR_ADMIN_TOKEN}
+      SONAR_ADMIN_PASSWORD: ${env.SONAR_ADMIN_PASSWORD}
+      SONAR_ADMIN_TOKEN: ${env.SONAR_ADMIN_TOKEN}
     resources:
       cpu: 0.5
       mem: 1024
