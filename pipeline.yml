@@ -1,20 +1,20 @@
 version: "1.1"
-  stages:
-    - stage:
-        - git-checkout:
-            alias: git-checkout
-            description: 代码仓库克隆
-    - stage:
-        - release:
-            alias: release
-            description: 用于打包完成时，向dicehub 提交完整可部署的dice.yml。用户若没在pipeline.yml里定义该action，CI会自动在pipeline.yml里插入该action
-            params:
-              dice_yml: ${git-checkout}/dice.yml
-              image:
-                sonar: registry.cn-hangzhou.aliyuncs.com/dice-third-party/sonar:8.9.6
-    - stage:
-        - dice:
-            alias: dice
-            description: 用于 Erda 平台部署应用服务
-            params:
-              release_id: ${release:OUTPUT:releaseID}
+stages:
+  - stage:
+      - git-checkout:
+          alias: git-checkout
+          description: 代码仓库克隆
+  - stage:
+      - release:
+          alias: release
+          description: 用于打包完成时，向dicehub 提交完整可部署的dice.yml。用户若没在pipeline.yml里定义该action，CI会自动在pipeline.yml里插入该action
+          params:
+            dice_yml: ${git-checkout}/dice.yml
+            image:
+              sonar: registry.cn-hangzhou.aliyuncs.com/dice-third-party/sonar:8.9.6
+  - stage:
+      - dice:
+          alias: dice
+          description: 用于 Erda 平台部署应用服务
+          params:
+            release_id: ${release:OUTPUT:releaseID}
