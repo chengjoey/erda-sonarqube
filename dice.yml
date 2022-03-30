@@ -2,6 +2,7 @@ version: '2.0'
 values:
 services:
   sonar:
+    image: registry.cn-hangzhou.aliyuncs.com/dice-third-party/sonar:8.9.6
     ports:
       - port: 9000
         expose: true
